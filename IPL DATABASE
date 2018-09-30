@@ -1,0 +1,394 @@
+BEGIN TRANSACTION;
+
+/* Create a table called IPLONE*/
+CREATE TABLE IPLONE(ID integer PRIMARY KEY, League_team text, Players integer,Matches integer);
+
+/* Create few records in this table */
+INSERT INTO IPLONE VALUES(1,'Team Mumbai','11','5');
+INSERT INTO IPLONE VALUES(2,'Team Pune','11','5');
+INSERT INTO IPLONE VALUES(3,'Team Chennai','11','5');
+
+SELECT * FROM IPLONE;
+CREATE TABLE Team_Mumbai(Player_No integer, Player_Name text, Runs integer, Wickets integer);
+INSERT INTO Team_Mumbai VALUES(11,'Aakash','24','1');
+INSERT INTO Team_Mumbai VALUES(12,'Akshay','34','2');
+INSERT INTO Team_Mumbai VALUES(13,'Aman','45','3');
+INSERT INTO Team_Mumbai VALUES(14,'Bhavesh','56','5');
+INSERT INTO Team_Mumbai VALUES(15,'Chaitanya','56','6');
+INSERT INTO Team_Mumbai VALUES(16,'Pratik','89','7');
+INSERT INTO Team_Mumbai VALUES(17,'Chintu','78','8');
+INSERT INTO Team_Mumbai VALUES(18,'PInku','24','9');
+INSERT INTO Team_Mumbai VALUES(20,'Gopal','55','10');
+INSERT INTO Team_Mumbai VALUES(21,'Tarun','11','11');
+INSERT INTO Team_Mumbai VALUES(22,'Rahul','0','12');
+  SELECT  
+          'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+       
+  FROM     Team_Mumbai
+UNION
+  SELECT 'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+  FROM   Team_Mumbai
+ORDER BY  1;
+SELECT * FROM Team_Mumbai;
+CREATE TABLE Team_Pune(Player_No integer, Player_Name text, Runs integer, Wickets integer);
+
+INSERT INTO Team_Pune VALUES(23,'a','24','1');
+INSERT INTO Team_Pune VALUES(24,'b','34','2');
+INSERT INTO Team_Pune VALUES(25,'c','45','3');
+INSERT INTO Team_Pune VALUES(26,'d','56','5');
+INSERT INTO Team_Pune VALUES(27,'e','56','6');
+INSERT INTO Team_Pune VALUES(28,'f','8','7');
+INSERT INTO Team_Pune VALUES(29,'g','78','8');
+INSERT INTO Team_Pune VALUES(30,'h','24','9');
+INSERT INTO Team_Pune VALUES(31,'i','55','10');
+INSERT INTO Team_Pune VALUES(32,'j','11','1');
+INSERT INTO Team_Pune VALUES(33,'k','0','1');
+  SELECT   'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+       
+  FROM     Team_Pune
+UNION
+  SELECT 'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+  FROM   Team_Pune
+ORDER BY  1;
+SELECT * FROM Team_Pune;
+CREATE TABLE Team_Chennai(Player_No integer, Player_Name text, Runs integer, Wickets integer);
+INSERT INTO Team_Chennai VALUES(34,'l','24','1');
+INSERT INTO Team_Chennai VALUES(35,'m','34','2');
+INSERT INTO Team_Chennai VALUES(36,'n','45','3');
+INSERT INTO Team_Chennai VALUES(37,'o','56','5');
+INSERT INTO Team_Chennai VALUES(38,'p','56','6');
+INSERT INTO Team_Chennai VALUES(39,'q','9','7');
+INSERT INTO Team_Chennai VALUES(40,'r','78','8');
+INSERT INTO Team_Chennai VALUES(41,'s','24','9');
+INSERT INTO Team_Chennai VALUES(42,'t','55','1');
+INSERT INTO Team_Chennai VALUES(43,'u','11','1');
+INSERT INTO Team_Chennai VALUES(44,'v','0','2');
+
+/* Display all the records from the table */
+SELECT  'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+       
+  FROM     Team_Chennai
+UNION
+  SELECT  'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+  FROM   Team_Chennai
+ORDER BY  1;
+SELECT * FROM Team_Chennai;
+CREATE temporary TABLE allthree as
+select Player_Name, max(Runs) as Runs
+from Team_Mumbai
+union all
+select Player_Name, max(Runs) as Runs
+from Team_Pune
+union all
+select Player_Name, max(Runs) as Runs
+from Team_Chennai;
+select Player_Name from allthree where Runs=(select max(Runs) from allthree);
+
+
+CREATE temporary TABLE allteam as
+select Player_Name, max(Wickets) as Wickets
+from Team_Mumbai
+union all
+select Player_Name, max(Wickets) as Wickets
+from Team_Pune
+union all
+select Player_Name, max(Wickets) as Wickets
+from Team_Chennai;
+select Player_Name from allteam where Wickets=(select max(Wickets) from allteam);
+
+CREATE TABLE IPLTWO(ID integer PRIMARY KEY, League_team text, Players integer,Matches integer);
+
+/* Create few records in this table */
+INSERT INTO IPLTWO VALUES(1,'Team Mumbai','11','5');
+INSERT INTO IPLTWO VALUES(2,'Team Pune','11','5');
+INSERT INTO IPLTWO VALUES(3,'Team Chennai','11','5');
+COMMIT;
+SELECT * FROM IPLTWO;
+CREATE TABLE Team_Mumbai2(Player_No integer, Player_Name text, Runs integer, Wickets integer);
+INSERT INTO Team_Mumbai2 VALUES(11,'Aakash','24','1');
+INSERT INTO Team_Mumbai2 VALUES(12,'Akshay','34','2');
+INSERT INTO Team_Mumbai2 VALUES(13,'Aman','45','3');
+INSERT INTO Team_Mumbai2 VALUES(14,'Bhavesh','56','5');
+INSERT INTO Team_Mumbai2 VALUES(15,'Chaitanya','56','6');
+INSERT INTO Team_Mumbai2 VALUES(16,'Pratik','89','7');
+INSERT INTO Team_Mumbai2 VALUES(17,'Chintu','78','8');
+INSERT INTO Team_Mumbai2 VALUES(18,'PInku','24','9');
+INSERT INTO Team_Mumbai2 VALUES(20,'Gopal','55','10');
+INSERT INTO Team_Mumbai2 VALUES(21,'Tarun','11','11');
+INSERT INTO Team_Mumbai2 VALUES(22,'Rahul','0','12');
+  SELECT  
+          'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+       
+  FROM     Team_Mumbai2
+UNION
+  SELECT 'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+  FROM   Team_Mumbai2
+ORDER BY  1;
+SELECT * FROM Team_Mumbai2;
+CREATE TABLE Team_Pune2(Player_No integer, Player_Name text, Runs integer, Wickets integer);
+
+INSERT INTO Team_Pune2 VALUES(23,'a','24','1');
+INSERT INTO Team_Pune2 VALUES(24,'b','34','2');
+INSERT INTO Team_Pune2 VALUES(25,'c','45','3');
+INSERT INTO Team_Pune2 VALUES(26,'d','56','5');
+INSERT INTO Team_Pune2 VALUES(27,'e','56','6');
+INSERT INTO Team_Pune2 VALUES(28,'f','8','7');
+INSERT INTO Team_Pune2 VALUES(29,'g','78','8');
+INSERT INTO Team_Pune2 VALUES(30,'h','24','9');
+INSERT INTO Team_Pune2 VALUES(31,'i','55','10');
+INSERT INTO Team_Pune2 VALUES(32,'j','11','1');
+INSERT INTO Team_Pune2 VALUES(33,'k','0','20');
+  SELECT   'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+       
+  FROM     Team_Pune2
+UNION
+  SELECT 'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+  FROM   Team_Pune2
+ORDER BY  1;
+SELECT * FROM Team_Pune2;
+CREATE TABLE Team_Chennai2(Player_No integer, Player_Name text, Runs integer, Wickets integer);
+INSERT INTO Team_Chennai2 VALUES(34,'l','24','1');
+INSERT INTO Team_Chennai2 VALUES(35,'m','250','2');
+INSERT INTO Team_Chennai2 VALUES(36,'n','45','3');
+INSERT INTO Team_Chennai2 VALUES(37,'o','56','5');
+INSERT INTO Team_Chennai2 VALUES(38,'p','56','6');
+INSERT INTO Team_Chennai2 VALUES(39,'q','9','7');
+INSERT INTO Team_Chennai2 VALUES(40,'r','78','8');
+INSERT INTO Team_Chennai2 VALUES(41,'s','24','9');
+INSERT INTO Team_Chennai2 VALUES(42,'t','55','1');
+INSERT INTO Team_Chennai2 VALUES(43,'u','11','1');
+INSERT INTO Team_Chennai2 VALUES(44,'v','0','2');
+
+/* Display player name for purple cap and orange cap from the table */
+SELECT  'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+       
+  FROM     Team_Chennai2
+UNION
+  SELECT  'Player_Name'
+       ,  'Runs'
+       ,  'Wickets'
+  FROM   Team_Chennai2
+ORDER BY  1;
+SELECT * FROM Team_Chennai2;
+CREATE temporary TABLE allthrees as
+select Player_Name, max(Runs) as Runs
+from Team_Mumbai2
+union all
+select Player_Name, max(Runs) as Runs
+from Team_Pune2
+union all
+select Player_Name, max(Runs) as Runs
+from Team_Chennai2;
+select Player_Name from allthrees where Runs=(select max(Runs) from allthrees);
+
+
+CREATE temporary TABLE allteams as
+select Player_Name, max(Wickets) as Wickets
+from Team_Mumbai2
+union all
+select Player_Name, max(Wickets) as Wickets
+from Team_Pune2
+union all
+select Player_Name, max(Wickets) as Wickets
+from Team_Chennai2;
+select Player_Name from allteams where Wickets=(select max(Wickets) from allteams);
+
+SELECT Player_No,Player_Name, Runs, Wickets FROM Team_Mumbai
+UNION ALL
+SELECT Player_No,Player_Name, Runs, Wickets FROM Team_Mumbai2;
+
+
+SELECT Player_No,Player_Name, Runs, Wickets FROM Team_Pune
+UNION ALL
+SELECT Player_No,Player_Name, Runs, Wickets FROM Team_Pune2;
+
+SELECT Player_No,Player_Name, Runs, Wickets FROM Team_Chennai
+UNION ALL
+SELECT Player_No,Player_Name, Runs, Wickets FROM Team_Chennai2;
+
+
+Select avg(Runs) from Team_Mumbai;
+Select avg(Runs) from Team_Pune;
+Select avg(Runs) from Team_Chennai;
+
+
+
+
+
+
+
+
+$sqlite3 database.sdb < main.sql
+1|Team Mumbai|11|5
+2|Team Pune|11|5
+3|Team Chennai|11|5
+Player_Name|Runs|Wickets
+11|Aakash|24|1
+12|Akshay|34|2
+13|Aman|45|3
+14|Bhavesh|56|5
+15|Chaitanya|56|6
+16|Pratik|89|7
+17|Chintu|78|8
+18|PInku|24|9
+20|Gopal|55|10
+21|Tarun|11|11
+22|Rahul|0|12
+Player_Name|Runs|Wickets
+23|a|24|1
+24|b|34|2
+25|c|45|3
+26|d|56|5
+27|e|56|6
+28|f|8|7
+29|g|78|8
+30|h|24|9
+31|i|55|10
+32|j|11|1
+33|k|0|1
+Player_Name|Runs|Wickets
+34|l|24|1
+35|m|34|2
+36|n|45|3
+37|o|56|5
+38|p|56|6
+39|q|9|7
+40|r|78|8
+41|s|24|9
+42|t|55|1
+43|u|11|1
+44|v|0|2
+Pratik
+Rahul
+1|Team Mumbai|11|5
+2|Team Pune|11|5
+3|Team Chennai|11|5
+Player_Name|Runs|Wickets
+11|Aakash|24|1
+12|Akshay|34|2
+13|Aman|45|3
+14|Bhavesh|56|5
+15|Chaitanya|56|6
+16|Pratik|89|7
+17|Chintu|78|8
+18|PInku|24|9
+20|Gopal|55|10
+21|Tarun|11|11
+22|Rahul|0|12
+Player_Name|Runs|Wickets
+23|a|24|1
+24|b|34|2
+25|c|45|3
+26|d|56|5
+27|e|56|6
+28|f|8|7
+29|g|78|8
+30|h|24|9
+31|i|55|10
+32|j|11|1
+33|k|0|20
+Player_Name|Runs|Wickets
+34|l|24|1
+35|m|250|2
+36|n|45|3
+37|o|56|5
+38|p|56|6
+39|q|9|7
+40|r|78|8
+41|s|24|9
+42|t|55|1
+43|u|11|1
+44|v|0|2
+m
+k
+11|Aakash|24|1
+12|Akshay|34|2
+13|Aman|45|3
+14|Bhavesh|56|5
+15|Chaitanya|56|6
+16|Pratik|89|7
+17|Chintu|78|8
+18|PInku|24|9
+20|Gopal|55|10
+21|Tarun|11|11
+22|Rahul|0|12
+11|Aakash|24|1
+12|Akshay|34|2
+13|Aman|45|3
+14|Bhavesh|56|5
+15|Chaitanya|56|6
+16|Pratik|89|7
+17|Chintu|78|8
+18|PInku|24|9
+20|Gopal|55|10
+21|Tarun|11|11
+22|Rahul|0|12
+23|a|24|1
+24|b|34|2
+25|c|45|3
+26|d|56|5
+27|e|56|6
+28|f|8|7
+29|g|78|8
+30|h|24|9
+31|i|55|10
+32|j|11|1
+33|k|0|1
+23|a|24|1
+24|b|34|2
+25|c|45|3
+26|d|56|5
+27|e|56|6
+28|f|8|7
+29|g|78|8
+30|h|24|9
+31|i|55|10
+32|j|11|1
+33|k|0|20
+34|l|24|1
+35|m|34|2
+36|n|45|3
+37|o|56|5
+38|p|56|6
+39|q|9|7
+40|r|78|8
+41|s|24|9
+42|t|55|1
+43|u|11|1
+44|v|0|2
+34|l|24|1
+35|m|250|2
+36|n|45|3
+37|o|56|5
+38|p|56|6
+39|q|9|7
+40|r|78|8
+41|s|24|9
+42|t|55|1
+43|u|11|1
+44|v|0|2
+42.9090909090909
+35.5454545454545
+35.6363636363636
